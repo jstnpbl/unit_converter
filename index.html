@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple and responsive unit converter for various measurements like distance, weight, and temperature.">
+  <title>Unit Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Unit Converter</h1>
+  </header>
+  <main>
+    <div class="converter-container">
+      <div class="form-group">
+        <label for="conversion-type">Choose a conversion type:</label>
+        <select id="conversion-type">
+          <option value="km-mi">Kilometers to Miles</option>
+          <option value="mi-km">Miles to Kilometers</option>
+          <option value="kg-lb">Kilograms to Pounds</option>
+          <option value="lb-kg">Pounds to Kilograms</option>
+          <option value="c-f">Celsius to Fahrenheit</option>
+          <option value="f-c">Fahrenheit to Celsius</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="input-value">Enter a value to convert:</label>
+        <input type="number" id="input-value" placeholder="e.g., 100">
+      </div>
+
+      <button id="convert-button">Convert</button>
+
+      <p id="result" aria-live="polite"></p>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Unit Converter. Built with ❤️.
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
