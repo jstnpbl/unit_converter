@@ -1,7 +1,35 @@
+:root {
+  --bg-gradient-start: #6a11cb;
+  --bg-gradient-end: #2575fc;
+  --text-color: #fff;
+  --container-bg-start: rgba(255, 255, 255, 0.2);
+  --container-bg-end: rgba(255, 255, 255, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-color: #333;
+  --button-gradient-start: #ff512f;
+  --button-gradient-end: #dd2476;
+  --result-color: #ffeb3b;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] {
+  --bg-gradient-start: #1a1a2e;
+  --bg-gradient-end: #16213e;
+  --text-color: #e6e6e6;
+  --container-bg-start: rgba(0, 0, 0, 0.3);
+  --container-bg-end: rgba(0, 0, 0, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --input-color: #e6e6e6;
+  --button-gradient-start: #2c3e50;
+  --button-gradient-end: #3498db;
+  --result-color: #3498db;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    color: #fff;
+    background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--text-color);
     text-align: center; /* Center text within body */
     padding: 20px;
     margin: 0;
@@ -19,8 +47,8 @@ body {
   h1 {
     font-size: 4em; /* Slightly larger heading */
     margin-bottom: 20px; /* Increased margin */
-    color: #ffeb3b;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    color: var(--result-color);
+    text-shadow: 2px 2px 5px var(--shadow-color);
   }
   
   main {
@@ -32,10 +60,10 @@ body {
   }
   
   .converter-container {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    background: linear-gradient(to bottom, var(--container-bg-start), var(--container-bg-end));
     padding: 40px; /* Increased padding */
     border-radius: 15px;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3); /* Slightly larger shadow */
+    box-shadow: 0 10px 22px var(--shadow-color); /* Slightly larger shadow */
     display: flex; /* Use flexbox for internal centering */
     flex-direction: column;
     align-items: stretch; /* Make children take full width */
@@ -46,7 +74,7 @@ body {
   
   .converter-container:hover {
     transform: scale(1.03); /* Slightly less scaling on hover */
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4); /* Slightly larger hover shadow */
+    box-shadow: 0 12px 28px var(--shadow-color); /* Slightly larger hover shadow */
   }
   
   .form-group {
@@ -67,18 +95,18 @@ body {
     border: none;
     border-radius: 10px; /* Slightly more rounded */
     font-size: 1.4em; /* Larger font size */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Slightly larger shadow */
+    box-shadow: 0 5px 10px var(--shadow-color); /* Slightly larger shadow */
     width: 100%; /* Ensure full width within the form group */
     box-sizing: border-box; /* Include padding and border in element's total width and height */
   }
   
   select, input {
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
+    background: var(--input-bg);
+    color: var(--input-color);
   }
   
   button {
-    background: linear-gradient(to right, #ff512f, #dd2476);
+    background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
     color: #fff;
     font-weight: bold;
     cursor: pointer;
@@ -86,17 +114,17 @@ body {
   }
   
   button:hover {
-    background: linear-gradient(to right, #dd2476, #ff512f);
+    background: linear-gradient(to right, var(--button-gradient-end), var(--button-gradient-start));
     transform: translateY(-3px);
-    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.3); /* Slightly larger hover shadow */
+    box-shadow: 0 7px 18px var(--shadow-color); /* Slightly larger hover shadow */
   }
   
   #result {
     font-size: 2em; /* Larger result text */
     margin-top: 30px; /* Increased margin */
     font-weight: bold;
-    color: #ffeb3b;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    color: var(--result-color);
+    text-shadow: 1px 1px 3px var(--shadow-color);
     text-align: center; /* Center the result text */
   }
   
@@ -105,65 +133,231 @@ body {
     padding-top: 20px; /* Add some space above the footer */
     font-size: 1.2em; /* Slightly larger footer text */
     color: rgba(255, 255, 255, 0.8);
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 3px var(--shadow-color);
   }
   
   /* Responsive Design */
   @media (max-width: 768px) {
+    body {
+      padding: 10px;
+      min-height: 100vh;
+      height: 100%;
+    }
+
     h1 {
-      font-size: 3.2em;
-      margin-bottom: 25px;
+      font-size: 2.5em;
+      margin-bottom: 15px;
     }
-  
+
     .converter-container {
-      padding: 30px;
-      max-width: 95%;
+      padding: 20px;
+      width: 95%;
+      max-width: none;
+      margin: 10px auto;
     }
-  
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
     label {
-      font-size: 1.3em;
+      font-size: 1.1em;
+      margin-bottom: 5px;
     }
-  
-    select, input, button {
-      padding: 18px;
-      font-size: 1.2em;
-    }
-  
-    #result {
-      font-size: 1.8em;
-      margin-top: 25px;
-    }
-  
-    footer {
-      font-size: 1em;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 20px;
-    }
-  
-    .converter-container {
-      padding: 25px;
-    }
-  
-    label {
-      font-size: 1.2em;
-    }
-  
+
     select, input, button {
       padding: 15px;
       font-size: 1.1em;
+      border-radius: 8px;
     }
-  
+
+    .unit-label {
+      font-size: 1em;
+      right: 15px;
+    }
+
+    .button-group {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .button-group button {
+      width: 100%;
+    }
+
     #result {
-      font-size: 1.5em;
+      font-size: 1.4em;
       margin-top: 20px;
     }
-  
+
+    .result-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .copy-button {
+      font-size: 1.4em;
+      padding: 8px;
+    }
+
     footer {
       font-size: 0.9em;
+      padding-top: 15px;
+    }
+
+    #theme-toggle {
+      font-size: 1.3em;
+      padding: 8px;
     }
   }
+  
+  /* Small mobile devices */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2em;
+    }
+
+    .converter-container {
+      padding: 15px;
+    }
+
+    select, input, button {
+      padding: 12px;
+      font-size: 1em;
+    }
+
+    #result {
+      font-size: 1.2em;
+    }
+
+    /* Improve touch targets */
+    select, input, button {
+      min-height: 44px; /* Minimum touch target size */
+    }
+
+    /* Prevent zoom on input focus */
+    input {
+      font-size: 16px !important;
+    }
+
+    /* Improve select dropdown visibility */
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 15px;
+      padding-right: 35px;
+    }
+  }
+
+  /* Landscape mode for mobile */
+  @media (max-height: 500px) and (orientation: landscape) {
+    body {
+      padding: 5px;
+    }
+
+    .converter-container {
+      padding: 15px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    select, input, button {
+      padding: 10px;
+    }
+  }
+
+  /* Prevent text size adjustment */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Improve touch feedback */
+  button, select {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Improve input appearance on iOS */
+  input[type="number"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* Improve select appearance on iOS */
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.unit-label {
+  position: absolute;
+  right: 20px;
+  color: var(--input-color);
+  font-size: 1.2em;
+  pointer-events: none;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.button-group button {
+  flex: 1;
+}
+
+#clear-button {
+  background: linear-gradient(to right, #2c3e50, #3498db);
+}
+
+#clear-button:hover {
+  background: linear-gradient(to right, #3498db, #2c3e50);
+}
+
+.result-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease;
+}
+
+.copy-button:hover {
+  transform: scale(1.1);
+}

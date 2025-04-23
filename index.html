@@ -11,29 +11,63 @@
 <body>
   <header>
     <h1>Unit Converter</h1>
+    <button id="theme-toggle" aria-label="Toggle dark/light mode">🌓</button>
   </header>
   <main>
     <div class="converter-container">
       <div class="form-group">
         <label for="conversion-type">Choose a conversion type:</label>
         <select id="conversion-type">
-          <option value="km-mi">Kilometers to Miles</option>
-          <option value="mi-km">Miles to Kilometers</option>
-          <option value="kg-lb">Kilograms to Pounds</option>
-          <option value="lb-kg">Pounds to Kilograms</option>
-          <option value="c-f">Celsius to Fahrenheit</option>
-          <option value="f-c">Fahrenheit to Celsius</option>
+          <optgroup label="Distance">
+            <option value="km-mi">Kilometers to Miles</option>
+            <option value="mi-km">Miles to Kilometers</option>
+            <option value="m-ft">Meters to Feet</option>
+            <option value="ft-m">Feet to Meters</option>
+          </optgroup>
+          <optgroup label="Weight">
+            <option value="kg-lb">Kilograms to Pounds</option>
+            <option value="lb-kg">Pounds to Kilograms</option>
+            <option value="g-oz">Grams to Ounces</option>
+            <option value="oz-g">Ounces to Grams</option>
+          </optgroup>
+          <optgroup label="Temperature">
+            <option value="c-f">Celsius to Fahrenheit</option>
+            <option value="f-c">Fahrenheit to Celsius</option>
+            <option value="c-k">Celsius to Kelvin</option>
+            <option value="k-c">Kelvin to Celsius</option>
+          </optgroup>
+          <optgroup label="Area">
+            <option value="m2-ft2">Square Meters to Square Feet</option>
+            <option value="ft2-m2">Square Feet to Square Meters</option>
+          </optgroup>
+          <optgroup label="Volume">
+            <option value="l-gal">Liters to Gallons</option>
+            <option value="gal-l">Gallons to Liters</option>
+          </optgroup>
+          <optgroup label="Speed">
+            <option value="kph-mph">Kilometers per hour to Miles per hour</option>
+            <option value="mph-kph">Miles per hour to Kilometers per hour</option>
+          </optgroup>
         </select>
       </div>
 
       <div class="form-group">
         <label for="input-value">Enter a value to convert:</label>
-        <input type="number" id="input-value" placeholder="e.g., 100">
+        <div class="input-container">
+          <input type="number" id="input-value" placeholder="e.g., 100">
+          <span id="input-unit" class="unit-label"></span>
+        </div>
       </div>
 
-      <button id="convert-button">Convert</button>
+      <div class="button-group">
+        <button id="convert-button">Convert</button>
+        <button id="clear-button">Clear</button>
+      </div>
 
-      <p id="result" aria-live="polite"></p>
+      <div class="result-container">
+        <p id="result" aria-live="polite"></p>
+        <button id="copy-button" class="copy-button" aria-label="Copy result">📋</button>
+      </div>
     </div>
   </main>
   <footer>
